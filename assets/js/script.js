@@ -20,5 +20,10 @@ async function fetchWeatherData(city) {
         alert('City not found.');
         return;
       }
+      const { lat, lon } = geoData[0];
+    // Fetch weather data
+    const weatherRes = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
+    );
     }
-};
+}
