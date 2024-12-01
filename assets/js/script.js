@@ -47,3 +47,19 @@ function displayCurrentWeather(data) {
       <img src="https://openweathermap.org/img/wn/${current.weather[0].icon}@2x.png" alt="${current.weather[0].description}">
     `;
   }
+// Function to display 5-day forecast
+function displayForecast(data) {
+    forecastContainer.innerHTML = '';
+    const dailyForecasts = data.list.filter((_, index) => index % 8 === 0); // 8 intervals per day
+    dailyForecasts.forEach(forecast => {
+      const card = document.createElement('div');
+      card.className = 'forecast-card';
+      card.innerHTML = `
+        <p><strong>Date:</strong> ${new Date(forecast.dt * 1000).toLocaleDateString()}</p>
+        <p><strong>Temp:</strong> ${forecast.main.temp} °C</p>
+        <p><strong>Humidity:</strong> ${forecast.main.humidity}%</p>
+        <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="${forecast.weather[0].description}">
+      `;
+      forecastContainer.appendChild(card);
+    });
+  }
