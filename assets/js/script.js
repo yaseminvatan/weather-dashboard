@@ -90,3 +90,5 @@ searchForm.addEventListener('submit', event => {
       cityInput.value = '';
     }
   });
+  // Initial rendering of search history
+renderSearchHistory();
