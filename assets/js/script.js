@@ -63,3 +63,12 @@ function displayForecast(data) {
       forecastContainer.appendChild(card);
     });
   }
+  // Function to update search history
+function updateSearchHistory(city) {
+    if (!searchHistory.includes(city)) {
+      searchHistory.push(city);
+      localStorage.setItem('weatherSearchHistory', JSON.stringify(searchHistory));
+      renderSearchHistory();
+    }
+  }
+  
