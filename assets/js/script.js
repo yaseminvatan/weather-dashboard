@@ -81,3 +81,12 @@ function renderSearchHistory() {
       searchHistoryDiv.appendChild(btn);
     });
   }
+  // Event listener for search form submission
+searchForm.addEventListener('submit', event => {
+    event.preventDefault();
+    const city = cityInput.value.trim();
+    if (city) {
+      fetchWeatherData(city);
+      cityInput.value = '';
+    }
+  });
