@@ -35,3 +35,15 @@ async function fetchWeatherData(city) {
     alert('Failed to fetch weather data. Please try again.');
   }
 }
+// Function to display current weather
+function displayCurrentWeather(data) {
+    const current = data.list[0];
+    currentWeatherDiv.innerHTML = `
+      <p><strong>City:</strong> ${data.city.name}</p>
+      <p><strong>Date:</strong> ${new Date(current.dt * 1000).toLocaleDateString()}</p>
+      <p><strong>Temperature:</strong> ${current.main.temp} °C</p>
+      <p><strong>Humidity:</strong> ${current.main.humidity}%</p>
+      <p><strong>Wind Speed:</strong> ${current.wind.speed} m/s</p>
+      <img src="https://openweathermap.org/img/wn/${current.weather[0].icon}@2x.png" alt="${current.weather[0].description}">
+    `;
+  }
