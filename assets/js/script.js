@@ -71,4 +71,13 @@ function updateSearchHistory(city) {
       renderSearchHistory();
     }
   }
-  
+  // Function to render search history
+function renderSearchHistory() {
+    searchHistoryDiv.innerHTML = '';
+    searchHistory.forEach(city => {
+      const btn = document.createElement('button');
+      btn.textContent = city;
+      btn.addEventListener('click', () => fetchWeatherData(city));
+      searchHistoryDiv.appendChild(btn);
+    });
+  }
