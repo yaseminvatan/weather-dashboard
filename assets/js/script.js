@@ -26,6 +26,12 @@ async function fetchWeatherData(city) {
       `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
     );
     const weatherData = await weatherRes.json();
+    displayCurrentWeather(weatherData);
+    displayForecast(weatherData);
 
-    }
+    updateSearchHistory(city);
+  } catch (error) {
+    console.error('Error fetching weather data:', error);
+    alert('Failed to fetch weather data. Please try again.');
+  }
 }
